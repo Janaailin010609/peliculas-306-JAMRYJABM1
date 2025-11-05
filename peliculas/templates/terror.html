@@ -1,0 +1,21 @@
+<!-- Indica que esta plantilla hereda de la plantilla base para reutilizar head, nav y main --> 
+{% extends "base.html" %}
+
+<!-- Bloque 'title' que reemplaza el título por defecto en base.html; aquí será "Terror" -->
+{% block title %} Terror {% endblock %}
+
+<!-- Inicio del bloque content que se insertará dentro del <main> de base.html -->
+{% block content %}
+    <!-- Encabezado visible en la pagina que indica la sección actual -->
+    <h1>Películas de Terror</h1>
+    <!-- Lista no ordenada que contendrá las películas recibidas desde la vista (app.py) -->
+    <ul>
+        <!-- Bucle Jinja: itera sobre la variable 'peliculas' pasada por render_template -->
+        {% for pelicula in peliculas %}
+            <!-- Elemento de la lista: muestra el título en negrita seguido de la sinopsis -->
+            <li><strong>{{pelicula.titulo }}</strong>: {{ pelicula.sinopsis }}</li>
+        <!-- Fin del bucle for -->
+        {% endfor %}
+    </ul>
+<!-- Cierre del bloque 'content' -->
+{% endblock %}

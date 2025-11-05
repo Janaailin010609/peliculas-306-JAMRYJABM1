@@ -1,0 +1,21 @@
+<!-- Indica que esta plantilla hereda de la plantilla base (reutiliza la estructura de base.html) -->
+{% extends 'base.html' %}
+
+<!-- Abre el bloque 'title' para que el título de la página sea "infantil" -->
+{% block title %}infantil{% endblock %}
+
+<!-- Abre el bloque 'content' donde irá el contenido específico de esta pagina -->
+{% block content %}
+    <!-- Título principal visible en la página -->
+    <h1>Películas de infantil</h1>
+    <!-- Lista no ordenada que contendrá las películas de la categoría -->
+    <ul>
+        <!-- Inicio de bucle Jinja: itera sobre la variable 'peliculas' pasada desde app.py -->
+        {% for pelicula in peliculas %}
+            <!-- Elemento de lista: muestra el título en negrita y la sinopsis -->
+            <li><strong>{{ pelicula.titulo }}</strong>: {{ pelicula.sinopsis }}</li>
+        <!-- Fin del bucle for -->
+        {% endfor %}
+    </ul>
+<!-- Cierra el bloque 'content' -->
+{% endblock %}

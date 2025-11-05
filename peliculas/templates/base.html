@@ -1,0 +1,33 @@
+<!-- Declara que el documento usa HTML5 -->
+<!DOCTYPE html>
+<!-- Elemento raiz del documento; lang indica el idioma -->
+<html lang="es">
+<head>
+    <!-- Define la codificación de caracteres (UTF-8) -->
+    <meta charset="UTF-8">
+    <!-- Hace que la página sea responsive en dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bloque de Jinja para que las plantillas hijas puedan establecer el título -->
+    <title>{% block title %}Menú de Películas{% endblock %}</title>
+    <!-- Enlace a la hoja de estilos ubicada en la carpeta static (función url for de Flask)-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Barra de navegación principal -->
+    <nav>
+        <!-- Enlaces que usan url for para generar las URLs según las funciones de vista en app.py -->
+        <a href="{{ url_for('index') }}">Inicio</a> |
+        <a href="{{ url_for('suspenso') }}">Suspenso</a> |
+        <a href="{{ url_for('terror') }}">Terror</a> |
+        <a href="{{ url_for('romance') }}">Romance</a> |
+        <a href="{{ url_for('infantil') }}">Infantil</a>
+    </nav>
+    <!-- Linea horizontal de separación -->
+    <hr>
+    <!-- Contenedor principal donde se insertará el contenido específico de cada página -->
+    <main>
+        <!-- Bloque de linja; las plantillas que extienden base.html definen este bloque-->
+        {% block content %} {% endblock %}
+    </main>
+</body>
+</html>
